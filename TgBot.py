@@ -76,27 +76,6 @@ async def new_tovar(message: types.Message):
     else:
         await message.answer('Новых товаров нет')
 
-async def notice():
-    '''Автоматически присылаем уведомления о новых товарах. '''
-    while True:
-        fresh_tovar = new_tovar(message)
-
-        if len(fresh_tovar) >= 1:
-            for k, v in (fresh_tovar.items()):
-                tovar = f"<b>{v['article_title']}</b>\n" \
-                        f"{v['article_price']}\n" \
-                        f"<strike>{v['article_price_old']}</strike>\n" \
-                        f"{v['article_url']}"
-
-                await bot.send_message(admin_id,tovar)
-        else:
-            await bot.send_message(admin_id, "Новых товаров нет")
-
-        await asyncio.sleep(10)
-
 
 if __name__ == '__main__':
-    loop = asyncio.get_event_loop()
-    loop.create_task(notice())
-
     executor.start_polling(dp)

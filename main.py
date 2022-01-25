@@ -40,7 +40,7 @@ def get_new(): # заимствовано из youtube (https://www.youtube.com/
             'article_url': article_url
         }
 
-    with open("tovar_dict.json", "w") as file:
+    with open("tovar_dict.json", "w",encoding='utf-8') as file:
         json.dump(tovar_dict, file, indent=4, ensure_ascii=False , sort_keys=False)
 
 
