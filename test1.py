@@ -1,9 +1,12 @@
+# -*- coding: utf-8 -*-
+import io
 from main import new_tovar
 
 def test_new_tovar(tmpdir):
     file = tmpdir.join('output.txt')
     new_tovar(file.strpath)  # or use str(file)
-    assert file.read() ==  """ {
+     f = io.open(file, mode="r", encoding="utf-8")
+    assert f.read() == """  {
     "10335": {
         "article_title": "Набор декоративных прищепок «Новогодние мишки», 10 шт.",
         "article_price": "85 руб.",

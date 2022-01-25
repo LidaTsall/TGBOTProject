@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import requests
 from bs4 import BeautifulSoup
 import json
@@ -46,7 +47,7 @@ def get_new(): # заимствовано из youtube (https://www.youtube.com/
 def new_tovar(json_path="tovar_dict.json"):
     ''' Эта функция проверяет сайт на обновления - новые товары. '''
 
-    with open("tovar_dict.json") as file:
+    with open("tovar_dict.json", encoding='utf-8') as file:
         new_list = json.load(file)
 
     headers = {
@@ -91,7 +92,7 @@ def new_tovar(json_path="tovar_dict.json"):
                 'article_url': article_url
             }
 
-    with open(json_path, "w") as file:
+    with open(json_path, "w", encoding='utf-8') as file:
         json.dump(tovar_dict, file, indent=4, ensure_ascii=False)
 
     return fresh_tovar
